@@ -1,13 +1,12 @@
 import express from 'express';
-import routes from './routes.js'; // Importa nossas rotas
+import cors from 'cors'; // 1. Importa o pacote cors
+import routes from './routes.js';
 
 const app = express();
 const PORT = 3333;
 
-// Habilita o Express para entender requisições em JSON
+app.use(cors()); // 2. Diz ao Express para usar o cors (DEVE vir antes das rotas)
 app.use(express.json()); 
-
-// Diz para a aplicação usar as rotas que criamos
 app.use(routes); 
 
 app.listen(PORT, () => {

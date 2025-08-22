@@ -1,4 +1,3 @@
-// src/controllers/SessionController.js
 import { PrismaClient } from '@prisma/client';
 import { compare } from 'bcryptjs';
 import jwt from 'jsonwebtoken';
@@ -6,27 +5,43 @@ import jwt from 'jsonwebtoken';
 const prisma = new PrismaClient();
 
 class SessionController {
+  // Método para autenticar um utilizador (criar uma sessão)
   async store(request, response) {
     try {
       const { email, password } = request.body;
-      const user = await prisma.user.findUnique({ where: { email } });
 
+      // 1. Procura o utilizador pelo e-mail fornecido
+      const user = await prisma.user.findUnique({
+        where: { email },
+      });
+
+      // 2. Se o utilizador não for encontrado, retorna um erro
       if (!user) {
-        return response.status(404).json({ error: 'Usuário não encontrado.' });
+        return response.status(401).json({ error: 'Credenciais inválidas.' });
       }
 
-      console.log('Senha enviada:', password);
-      console.log('Senha do banco (hash):', user.password);
-
+      // 3. Compara a senha enviada com a senha criptografada no banco
       const passwordMatch = await compare(password, user.password);
 
+      // 4. Se as senhas não baterem, retorna um erro
       if (!passwordMatch) {
-        return response.status(401).json({ error: 'Senha incorreta.' });
+        return response.status(401).json({ error: 'Credenciais inválidas.' });
       }
 
-      // ... o restante do código
+      // 5. Se tudo estiver correto, gera o Token JWT
+      const token = jwt.sign(
+        { id: user.id },
+        'seuSegredoSuperSecreto',
+        { expiresIn: '1d' }
+      );
+
+      // 6. Retorna os dados do utilizador e o token
+      const { password: _, ...userWithoutPassword } = user;
+      return response.json({ user: userWithoutPassword, token });
+
     } catch (error) {
-      // ...
+      console.error(error);
+      return response.status(500).json({ error: 'Falha na autenticação.' });
     }
   }
 }
