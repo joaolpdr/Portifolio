@@ -77,10 +77,10 @@ npm install
 # Crie um ficheiro .env na raiz e adicione a sua URL de conexão do PostgreSQL
 # Exemplo: DATABASE_URL="postgresql://seu_usuario@localhost:5432/orquestra?schema=public"
 ```bash
-# 5. Aplique as migrations para criar as tabelas na base de dados
+5. Aplique as migrations para criar as tabelas na base de dados
 npx prisma migrate dev
 
-# 6. Inicie o servidor do backend
+6. Inicie o servidor do backend
 npm run dev
 
 O servidor da API estará a correr em http://localhost:3333.
@@ -88,13 +88,13 @@ O servidor da API estará a correr em http://localhost:3333.
 2. Configuração do Frontend (orquestra-app)
 Abra um novo terminal para executar o frontend.
 
-# 1. Navegue para a pasta da aplicação
+1. Navegue para a pasta da aplicação
 cd orquestra-app
 
-# 2. Instale as dependências
+2. Instale as dependências
 npm install
 
-# 3. Inicie o servidor de desenvolvimento
+3. Inicie o servidor de desenvolvimento
 npm run dev
 
 A aplicação React estará disponível em http://localhost:5173 (ou outra porta indicada pelo Vite).
