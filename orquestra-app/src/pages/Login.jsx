@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../hooks/useAuth'; // Importamos o nosso hook de autenticação
+import { useAuth } from '../hooks/useAuth';
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -8,25 +8,25 @@ function Login() {
   const [error, setError] = useState('');
 
   const navigate = useNavigate();
-  const { login } = useAuth(); // Pegamos a função de login do nosso Context
+  const { login } = useAuth();
 
   async function handleSubmit(event) {
     event.preventDefault();
     setError('');
 
     try {
-      // Usamos a função de login do AuthProvider
       await login({ email, password });
-
-      // Se o login for bem-sucedido, o AuthProvider guarda o token
-      // e nós apenas navegamos para o dashboard
       navigate('/dashboard');
     } catch (err) {
+      // ESTA É A MUDANÇA IMPORTANTE
+      // Vamos mostrar o erro exato da API na consola do navegador
+      console.error("Erro detalhado do login:", err.response); 
+      
       setError('Não foi possível fazer o login. Verifique as suas credenciais.');
     }
   }
 
-  // O JSX do formulário continua exatamente o mesmo
+  // O resto do seu JSX do formulário continua aqui...
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center">
       <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md">

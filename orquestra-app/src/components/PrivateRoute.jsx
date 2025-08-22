@@ -1,16 +1,15 @@
-// src/components/PrivateRoute.jsx
 import React from 'react';
 import { Navigate } from 'react-router-dom';
-import { useAuth } from '../hooks/useAuth'; // O caminho corrigido
+import { useAuth } from '../hooks/useAuth';
 
 const PrivateRoute = ({ children }) => {
-  const { token, loading } = useAuth();
+  // Pegamos o 'user' do nosso contexto de autenticação.
+  // Se o objeto 'user' existir, significa que o utilizador está autenticado.
+  const { user } = useAuth();
 
-  if (loading) {
-    return <div>Carregando...</div>;
-  }
-
-  return token ? children : <Navigate to="/login" />;
+  // Se houver um utilizador, mostramos a página protegida (o 'children').
+  // Caso contrário, redirecionamos de volta para a página de login.
+  return user ? children : <Navigate to="/login" />;
 };
 
 export default PrivateRoute;
