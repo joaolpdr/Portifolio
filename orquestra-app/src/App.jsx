@@ -10,13 +10,15 @@ function App() {
       {}
       <Route path="/" element={<Navigate to="/login" />} />
       <Route path="/login" element={<Login />} />
+      
+       {/* Rotas Privadas */}
       <Route
         path="/dashboard"
-        element={
-          <PrivateRoute>
-            <Dashboard />
-          </PrivateRoute>
-        }
+        element={<PrivateRoute><Dashboard /></PrivateRoute>}
+      />
+      <Route
+        path="/board/:boardId" // 2. Adiciona a nova rota dinâmica
+        element={<PrivateRoute><BoardView /></PrivateRoute>}
       />
     </Routes>
   );
