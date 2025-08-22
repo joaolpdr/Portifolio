@@ -13,3 +13,6 @@ Content-Type: application/json
 POST http://localhost:3333/sessions
 Content-Type: application/json
 
+### 5. Buscar um quadro específico e as suas tarefas
+GET http://localhost:3333/boards/ID_DO_QUADRO_AQUI
+Authorization: Bearer 
