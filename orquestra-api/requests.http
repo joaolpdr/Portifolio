@@ -1,0 +1,48 @@
+### 1. Cadastrar um novo usuário
+POST http://localhost:3333/users
+Content-Type: application/json
+
+
+{
+"name": "João Lucas",
+"email": "joao.lucas@email.com",
+"password": "senhaSuperSecreta123",
+
+
+
+  "name": "Maria Pereira",
+  "email": "maria.pereira@email.com",
+  "password": "senhaSuperSecreta456"
+
+}
+
+
+### 2. Autenticar (fazer login) para pegar o TOKEN
+POST http://localhost:3333/sessions
+Content-Type: application/json
+
+{
+  "email": "maria.pereira@email.com",
+  "password": "senhaSuperSecreta456"
+}
+
+
+### 3. Criar um novo quadro para pegar o BOARD_ID
+POST http://localhost:3333/boards
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjQwYzUzM2Q1LWU2OGQtNGRjNy1hYWZlLTQ5Y2U0YWMyYWU4NyIsImlhdCI6MTc1NTgxODYzNiwiZXhwIjoxNzU1OTA1MDM2fQ.jIoapYfhfYQguEjpz0lJrCCRsQsM1s-NH4X_MhP0c_I
+
+{
+  "title": "Meu Primeiro Quadro"
+}
+
+
+### 4. Criar uma nova tarefa dentro do quadro
+POST http://localhost:3333/boards/0b94fe72-8509-4f45-94cc-e86221e7612c/tasks
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjQwYzUzM2Q1LWU2OGQtNGRjNy1hYWZlLTQ5Y2U0YWMyYWU4NyIsImlhdCI6MTc1NTgxODYzNiwiZXhwIjoxNzU1OTA1MDM2fQ.jIoapYfhfYQguEjpz0lJrCCRsQsM1s-NH4X_MhP0c_I
+
+{
+  "title": "Minha primeira tarefa",
+  "description": "Configurar o back-end do projeto Orquestra"
+}
