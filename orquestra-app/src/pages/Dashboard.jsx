@@ -63,7 +63,6 @@ function Dashboard() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {boards.length > 0 ? (
               boards.map(board => (
-                // 2. Transforma a div num Link que aponta para a rota do quadro
                 <Link to={`/board/${board.id}`} key={board.id} className="block bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow cursor-pointer">
                   <h3 className="text-lg font-bold text-gray-800">{board.title}</h3>
                 </Link>

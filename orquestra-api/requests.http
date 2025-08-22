@@ -1,4 +1,4 @@
-### 1. Criar um utilizador de teste para o frontend
+# Criar um utilizador de teste
 POST http://localhost:3333/users
 Content-Type: application/json
 
@@ -8,11 +8,36 @@ Content-Type: application/json
   "password": "123456"
 }
 
-###
-### 2. Autenticar (fazer login) para pegar o TOKEN
+# Autenticar (fazer login) para pegar o TOKEN
 POST http://localhost:3333/sessions
 Content-Type: application/json
 
-### 5. Buscar um quadro específico e as suas tarefas
+{
+  "email": "teste@orquestra.com",
+  "password": "123456"
+}
+
+#Criar um novo quadro // Precisa de um token de autenticação
+
+POST http://localhost:3333/boards
+Content-Type: application/json
+Authorization: Bearer 
+
+{
+  "title": "Meu Primeiro Quadro"
+}
+
+# Criar uma nova tarefa dentro de um quadro // Precisa de um token e do ID do quadro na URL
+
+POST http://localhost:3333/boards/ID_DO_QUADRO_AQUI/tasks
+Content-Type: application/json
+Authorization: Bearer 
+
+{
+  "title": "Minha primeira tarefa",
+  "description": "Configurar o back-end do projeto Orquestra"
+}
+
+# Buscar um quadro específico e as suas tarefas
 GET http://localhost:3333/boards/ID_DO_QUADRO_AQUI
 Authorization: Bearer 

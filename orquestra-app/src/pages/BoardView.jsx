@@ -13,7 +13,7 @@ function BoardView() {
       <h1 className="text-3xl font-bold">Visualização do Quadro</h1>
       <p className="mt-2 text-gray-600">O ID deste quadro é: {boardId}</p>
 
-      {/* Aqui iremos exibir as colunas e as tarefas no futuro */}
+      {}
     </div>
   );
 }

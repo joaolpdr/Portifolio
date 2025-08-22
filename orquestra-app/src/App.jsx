@@ -1,13 +1,12 @@
-// src/App.jsx
 import { Routes, Route, Navigate } from 'react-router-dom';
 import PrivateRoute from './components/PrivateRoute';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
+import BoardView from './pages/BoardView';
 
 function App() {
   return (
     <Routes>
-      {}
       <Route path="/" element={<Navigate to="/login" />} />
       <Route path="/login" element={<Login />} />
       
@@ -17,7 +16,7 @@ function App() {
         element={<PrivateRoute><Dashboard /></PrivateRoute>}
       />
       <Route
-        path="/board/:boardId" // 2. Adiciona a nova rota dinâmica
+        path="/board/:boardId"
         element={<PrivateRoute><BoardView /></PrivateRoute>}
       />
     </Routes>

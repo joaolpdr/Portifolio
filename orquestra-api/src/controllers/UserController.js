@@ -8,10 +8,10 @@ class UserController {
   // Método para criar (armazenar) um novo usuário
   async store(request, response) {
     try {
-      // 1. Pega os dados do corpo da requisição
+      // Pega os dados do corpo da requisição
       const { name, email, password } = request.body;
 
-      // 2. Verifica se um usuário com este email já existe
+      // Verifica se um usuário com este email já existe
       const userExists = await prisma.user.findUnique({
         where: { email },
       });
@@ -20,10 +20,10 @@ class UserController {
         return response.status(400).json({ error: 'Este e-mail já está em uso.' });
       }
 
-      // 3. Criptografa a senha antes de salvar
+      // Criptografa a senha antes de salvar
       const hashedPassword = await hash(password, 8);
 
-      // 4. Usa o Prisma para criar o usuário no banco de dados
+      // Usa o Prisma para criar o usuário no banco de dados
       const user = await prisma.user.create({
         data: {
           name,
@@ -32,7 +32,7 @@ class UserController {
         },
       });
 
-      // 5. Retorna o usuário criado (sem a senha)
+      // Retorna o usuário criado (sem a senha)
       const { password: _, ...userWithoutPassword } = user;
       return response.status(201).json(userWithoutPassword);
 

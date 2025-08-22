@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { AuthContext } from './authContext'; // 1. Importa o context do ficheiro correto
+import { AuthContext } from './authContext';
 import api from '../services/api';
 
 export function AuthProvider({ children }) {
@@ -33,7 +33,7 @@ export function AuthProvider({ children }) {
     setData({});
   };
 
-  // 2. Usamos o AuthContext importado para fornecer o valor
+  // Utilizando o AuthContext importado para fornecer o valor
   return (
     <AuthContext.Provider value={{ user: data.user, token: data.token, login, logout }}>
       {children}

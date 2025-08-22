@@ -7,19 +7,19 @@ import TaskController from './controllers/TaskController.js'; // 1. Importa o Ta
 
 const routes = new Router();
 
-// --- Rotas Públicas ---
+// Rotas Públicas
 routes.post('/users', UserController.store);
 routes.post('/sessions', SessionController.store);
 
-// --- Rotas Privadas ---
+// Rotas Privadas 
 routes.use(authMiddleware);
 
 // Rotas de Quadros (Boards)
 routes.post('/boards', BoardController.store);
 routes.get('/boards', BoardController.index);
 
-// Rotas de Tarefas (Tasks)
-// :boardId é um parâmetro que pegamos na URL
-routes.post('/boards/:boardId/tasks', TaskController.store); // 2. Adiciona a nova rota
+// Rotas de Tarefas (Tasks) // boardId é um parâmetro que pegamos na URL
+
+routes.post('/boards/:boardId/tasks', TaskController.store);
 
 export default routes;

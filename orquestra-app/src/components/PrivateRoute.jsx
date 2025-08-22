@@ -3,7 +3,7 @@ import { Navigate } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
 
 const PrivateRoute = ({ children }) => {
-  // Pegamos o 'user' do nosso contexto de autenticação.
+  // O 'user' do nosso contexto de autenticação.
   // Se o objeto 'user' existir, significa que o utilizador está autenticado.
   const { user } = useAuth();
 

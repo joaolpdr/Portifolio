@@ -10,32 +10,32 @@ class SessionController {
     try {
       const { email, password } = request.body;
 
-      // 1. Procura o utilizador pelo e-mail fornecido
+      // Procura o utilizador pelo e-mail fornecido
       const user = await prisma.user.findUnique({
         where: { email },
       });
 
-      // 2. Se o utilizador não for encontrado, retorna um erro
+      // Se o utilizador não for encontrado, retorna um erro
       if (!user) {
         return response.status(401).json({ error: 'Credenciais inválidas.' });
       }
 
-      // 3. Compara a senha enviada com a senha criptografada no banco
+      // Compara a senha enviada com a senha criptografada no banco
       const passwordMatch = await compare(password, user.password);
 
-      // 4. Se as senhas não baterem, retorna um erro
+      // Se as senhas não baterem, retorna um erro
       if (!passwordMatch) {
         return response.status(401).json({ error: 'Credenciais inválidas.' });
       }
 
-      // 5. Se tudo estiver correto, gera o Token JWT
+      // Se tudo estiver correto, gera o Token JWT
       const token = jwt.sign(
         { id: user.id },
         'seuSegredoSuperSecreto',
         { expiresIn: '1d' }
       );
 
-      // 6. Retorna os dados do utilizador e o token
+      // Retorna os dados do utilizador e o token
       const { password: _, ...userWithoutPassword } = user;
       return response.json({ user: userWithoutPassword, token });
 
