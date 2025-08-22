@@ -1,61 +1,59 @@
-Orquestra 🎵
-Orquestra é um sistema de gestão de projetos e tarefas colaborativo, inspirado em ferramentas como Trello e Asana. O objetivo é fornecer uma plataforma intuitiva para organizar fluxos de trabalho, acompanhar o progresso de tarefas e facilitar a colaboração em equipa.
+<p align="center">
+<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg" alt="React Logo" width="80"/>
+<h1 align="center">Projeto Orquestra 🎵</h1>
+</p>
 
-Este projeto foi construído como um estudo de caso completo de uma aplicação Full-Stack, abrangendo desde a modelagem do banco de dados e a criação de uma API RESTful segura até o desenvolvimento de uma interface de utilizador reativa e moderna.
+<p align="center">
+<strong>Um sistema de gestão de projetos e tarefas colaborativo, Full-Stack, construído com as mais modernas tecnologias do ecossistema JavaScript.</strong>
+</p>
 
-✨ Funcionalidades (Backend)
-Atualmente, a API do Orquestra suporta as seguintes funcionalidades:
+<p align="center">
+<img src="https://img.shields.io/badge/status-em%20desenvolvimento-yellow" alt="Status do Projeto"/>
+</p>
 
-Autenticação de Utilizadores:
+📑 Sobre o Projeto
+O Orquestra é uma aplicação web completa, inspirada em ferramentas como Trello e Asana, projetada para ajudar equipas e indivíduos a organizar fluxos de trabalho de forma visual e intuitiva. O objetivo é fornecer uma plataforma robusta para criar quadros, gerir tarefas através de colunas (Kanban) e acompanhar o progresso de múltiplos projetos.
 
-Registo de novos utilizadores com senhas criptografadas.
+Este projeto foi desenvolvido como um estudo de caso aprofundado, demonstrando a construção de uma aplicação Full-Stack do zero, desde a modelagem do banco de dados relacional e a criação de uma API RESTful segura, até o desenvolvimento de uma interface de utilizador reativa, moderna e responsiva.
 
-Login com sistema de autenticação via Token JWT.
+✨ Funcionalidades Implementadas
+Backend (orquestra-api)
+✅ Autenticação Segura: Registo de utilizadores com senhas criptografadas (bcryptjs) e sistema de login com Tokens JWT (JSON Web Tokens).
 
-Gestão de Quadros (Boards):
+✅ Gestão de Quadros (Boards): Criação e listagem de quadros, com cada quadro associado ao utilizador que o criou.
 
-Criação de novos quadros por utilizadores autenticados.
+✅ Gestão de Tarefas (Tasks): Criação de tarefas dentro de um quadro específico.
 
-Listagem de todos os quadros pertencentes ao utilizador logado.
+✅ Segurança de Rotas: Implementação de middleware de autenticação para proteger rotas privadas, garantindo que um utilizador só pode aceder e modificar os seus próprios dados.
 
-Gestão de Tarefas (Tasks):
+✅ Relacionamentos de Dados: Estrutura de dados relacional complexa (User -> Board -> Task) gerida com Prisma.
 
-Criação de novas tarefas dentro de um quadro específico.
+Frontend (orquestra-app)
+✅ Autenticação de Utilizador: Páginas de Login e Registo funcionais, conectadas à API.
 
-Validação para garantir que apenas o dono do quadro pode adicionar tarefas.
+✅ Gestão de Estado Global: Controlo centralizado do estado de autenticação com a Context API e Hooks (useAuth).
 
-Segurança:
+✅ Navegação e Rotas Protegidas: Sistema de rotas com react-router-dom que protege páginas como o Dashboard, redirecionando utilizadores não autenticados.
 
-Middleware de autenticação para proteger rotas privadas.
+✅ Dashboard Interativo: O utilizador pode ver uma lista dos seus quadros e criar novos quadros em tempo real.
 
-🚀 Tecnologias Utilizadas
-Este projeto é dividido em duas partes principais: o backend e o frontend.
+✅ Navegação Dinâmica: Ao clicar num quadro, o utilizador é levado para uma página de visualização específica para aquele quadro.
 
-Backend (orquestra-api):
+🛠️ Tecnologias Utilizadas
+O projeto foi construído com uma arquitetura de monorepo, separando as responsabilidades entre o backend e o frontend.
 
-Runtime: Node.js
+<p align="center">
+<img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript"/>
+<img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" alt="Node.js"/>
+<img src="https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white" alt="Express.js"/>
+<img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React"/>
+<img src="https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white" alt="PostgreSQL"/>
+<img src="https://img.shields.io/badge/Prisma-2D3748?style=for-the-badge&logo=prisma&logoColor=white" alt="Prisma"/>
+<img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS"/>
+<img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white" alt="Vite"/>
+</p>
 
-Framework: Express.js
-
-Banco de Dados: PostgreSQL
-
-ORM: Prisma
-
-Autenticação: JWT (JSON Web Tokens) & bcryptjs
-
-Ambiente de Desenvolvimento: Nodemon & Sucrase
-
-Frontend (orquestra-app):
-
-Biblioteca: React
-
-Build Tool: Vite
-
-Estilização: Tailwind CSS
-
-Cliente HTTP: Axios
-
-⚙️ Como Executar o Projeto Localmente
+🚀 Como Executar o Projeto Localmente
 Para executar o projeto na sua máquina, siga os passos abaixo.
 
 Pré-requisitos
@@ -63,26 +61,26 @@ Node.js (versão LTS recomendada)
 
 PostgreSQL instalado e a correr
 
-Um gestor de pacotes como npm ou yarn
+npm (ou outro gestor de pacotes)
 
 1. Configuração do Backend (orquestra-api)
-# Navegue para a pasta da API
+# 1. Clone o repositório (se aplicável)
+# git clone https://github.com/seu-usuario/seu-repositorio.git
+
+# 2. Navegue para a pasta da API
 cd orquestra-api
 
-# Instale as dependências
+# 3. Instale as dependências
 npm install
 
-# Crie uma cópia do arquivo de ambiente
-cp .env.example .env
-
-Abra o arquivo .env e configure a variável DATABASE_URL com as suas credenciais do PostgreSQL.
-
-DATABASE_URL="postgresql://SEU_USUARIO:SUA_SENHA@localhost:5432/orquestra?schema=public"
+# 4. Configure as variáveis de ambiente
+# Crie um ficheiro .env na raiz e adicione a sua URL de conexão do PostgreSQL
+# Exemplo: DATABASE_URL="postgresql://seu_usuario@localhost:5432/orquestra?schema=public"
 ```bash
-# Aplique as migrations para criar as tabelas no banco de dados
+# 5. Aplique as migrations para criar as tabelas na base de dados
 npx prisma migrate dev
 
-# Inicie o servidor do backend
+# 6. Inicie o servidor do backend
 npm run dev
 
 O servidor da API estará a correr em http://localhost:3333.
@@ -90,13 +88,17 @@ O servidor da API estará a correr em http://localhost:3333.
 2. Configuração do Frontend (orquestra-app)
 Abra um novo terminal para executar o frontend.
 
-# Navegue para a pasta da aplicação
+# 1. Navegue para a pasta da aplicação
 cd orquestra-app
 
-# Instale as dependências
+# 2. Instale as dependências
 npm install
 
-# Inicie o servidor de desenvolvimento
+# 3. Inicie o servidor de desenvolvimento
 npm run dev
 
 A aplicação React estará disponível em http://localhost:5173 (ou outra porta indicada pelo Vite).
+
+<p align="center">
+Desenvolvido com ❤️ por João Lucas do Prado Ribeiro
+</p>
